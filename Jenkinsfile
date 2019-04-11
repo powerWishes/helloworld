@@ -18,7 +18,8 @@ pipeline {
         }
         stage('运行') {
             steps {
-                sh 'java -jar target/helloworld-0.0.1-SNAPSHOT.jar'
+                sh 'mkdir -p logs'
+                sh 'nohup java -jar target/helloworld-0.0.1-SNAPSHOT.jar > logs 2>&1 &'
             }
         }
     }
