@@ -13,12 +13,12 @@ pipeline {
         }
         stage('测试') {
             steps {
-                echo 'skip test stage, because ... You konw.' 
+                sh 'echo skip test stage, because ... You konw.' 
             }
         }
         stage('运行') {
             steps {
-                java -jar target/helloworld-0.0.1-SNAPSHOT.jar
+                sh 'java -jar target/helloworld-0.0.1-SNAPSHOT.jar'
             }
         }
     }
