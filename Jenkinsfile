@@ -28,18 +28,18 @@ pipeline {
                     parent = '${is-parent-build-chanpay-parent}'
                     general = '${is-parent-build-chanpay-parent-general}'
                     common = '${is-parent-build-chanpay-common}'
-                    println 'parent,"${is-parent-build-chanpay-parent}"'
-                    println 'general,"${is-parent-build-chanpay-parent-general}"'
-                    println 'common,"${is-parent-build-chanpay-common}"'
-                    if ("${is-parent-build-chanpay-parent}") {
+                    println 'parent,'+parent
+                    println 'general,'+general
+                    println 'common,'+common
+                    if (parent) {
                         needBuildProList.add("chanpay-parent")
                         println 'needBuildProList 1'
                     }
-                    if ("${is-parent-build-chanpay-parent-general}") {
+                    if (general) {
                         needBuildProList.add("chanpay-general")
                         println 'needBuildProList 2'
                     }
-                    if ("${is-parent-build-chanpay-common}") {
+                    if (common) {
                         needBuildProList.add("chanpay-common")
                         println 'needBuildProList 3'
                     }
