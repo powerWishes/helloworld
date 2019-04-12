@@ -5,18 +5,14 @@ pipeline {
             args '-v /root/.m2:/root/.m2' 
         }
     }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: 'false', description: '父工程')
+        booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: 'false', description: '通用父工程')
+        booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: 'false', description: '公共工程')
+    }
     stages {
         stage('__init__') {
-            input{
-                message "please ensure project."
-                ok "Yes, I'm sure."
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: 'false', description: '父工程')
-                    booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: 'false', description: '通用父工程')
-                    booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: 'false', description: '公共工程')
-                }
-            }
             steps {
                 sh 'echo "Hello, ${PERSON}, nice to meet you."'
             }
