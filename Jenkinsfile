@@ -1,6 +1,9 @@
 #!groovy
 def needBuildProList = []
 def buildPerson = 'admin'
+def parent = false
+def general = false
+def common = false
 pipeline {
     agent {
         docker {
@@ -15,19 +18,16 @@ pipeline {
                 ok "Ok, I'm sure."
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: false, description: '父工程')
-                    booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: false, description: '通用父工程')
-                    booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: false, description: '公共工程')
+                    booleanParam(name: 'parentBool', defaultValue: false, description: '父工程')
+                    booleanParam(name: 'generalBool', defaultValue: false, description: '通用父工程')
+                    booleanParam(name: 'commonBool', defaultValue: false, description: '公共工程')
                }
             }
             steps {
                 script {
-                    def parent = false
-                    def general = false
-                    def common = false
-                    parent = ${is-parent-build-chanpay-parent}
-                    general = ${is-parent-build-chanpay-parent-general}
-                    common = ${is-parent-build-chanpay-common}
+                    parent = '${parentBool}'
+                    general = '${generalBool}'
+                    common = '${commonBool}'
                     println 'parent,'+parent
                     println 'general,'+general
                     println 'common,'+common
