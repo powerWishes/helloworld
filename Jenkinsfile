@@ -1,4 +1,4 @@
-Jenkinsfile (Scripted Pipeline)
+#!groovy
 def needBuildProList = []
 def buildPerson = ''
 pipeline {
