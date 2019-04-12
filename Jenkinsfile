@@ -22,13 +22,13 @@ pipeline {
             }
             steps {
                 script {
-                    if (${is-parent-build-chanpay-parent}==true) {
+                    if (params['is-parent-build-chanpay-parent']==true) {
                          needBuildProList.add('chanpay-parent')
                     }
-                    if (${is-parent-build-chanpay-parent-general}==true) {
+                    if (params['is-parent-build-chanpay-parent-general']==true) {
                          needBuildProList.add('chanpay-general')
                     }
-                    if (${is-parent-build-chanpay-common}==true) {
+                    if (params['is-parent-build-chanpay-common']==true) {
                          needBuildProList.add('chanpay-common')
                     }
                     println 'need build project :' + needBuildProList
