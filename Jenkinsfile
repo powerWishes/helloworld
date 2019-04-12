@@ -24,6 +24,7 @@ pipeline {
                }
             }
             steps {
+                echo 'aaa ${parentBool}'
                 script {
                     parent = '${parentBool}'
                     general = '${generalBool}'
