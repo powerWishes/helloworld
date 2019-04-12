@@ -1,6 +1,6 @@
 #!groovy
 def needBuildProList = []
-def buildPerson = ''
+def buildPerson = 'admin'
 pipeline {
     agent {
         docker {
@@ -22,6 +22,12 @@ pipeline {
             }
             steps {
                 script {
+                    def parent = false
+                    def general = false
+                    def common = false
+                    parent = '${is-parent-build-chanpay-parent}'
+                    general = '${is-parent-build-chanpay-parent-general}'
+                    common = '${is-parent-build-chanpay-common}'
                     println 'parent,"${is-parent-build-chanpay-parent}"'
                     println 'general,"${is-parent-build-chanpay-parent-general}"'
                     println 'common,"${is-parent-build-chanpay-common}"'
@@ -37,7 +43,7 @@ pipeline {
                         needBuildProList.add("chanpay-common")
                         println 'needBuildProList 3'
                     }
-                    buildPerson = params['PERSON']
+                    buildPerson = "${PERSON}"
                     println 'need build project :' + needBuildProList
                     println 'buildPerson :' + buildPerson
                     for(nbp in needBuildProList) {
