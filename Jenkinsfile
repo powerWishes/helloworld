@@ -18,29 +18,28 @@ pipeline {
                 ok "Ok, I'm sure."
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    booleanParam(name: 'parentBool', defaultValue: false, description: '父工程')
-                    booleanParam(name: 'generalBool', defaultValue: false, description: '通用父工程')
-                    booleanParam(name: 'commonBool', defaultValue: false, description: '公共工程')
+                    booleanParam(name: 'is-build-parent', defaultValue: false, description: '父工程')
+                    booleanParam(name: 'is-build-general', defaultValue: false, description: '通用父工程')
+                    booleanParam(name: 'is-build-common', defaultValue: false, description: '公共工程')
                }
             }
             steps {
-                echo 'aaa "${parentBool}"'
                 script {
-                    parent = "${parentBool}"
-                    general = "${generalBool}"
-                    common = "${commonBool}"
+                    parent = "${is-build-parent}"
+                    general = "${is-build-general}"
+                    common = "${is-build-common}"
                     println 'parent,'+parent
                     println 'general,'+general
                     println 'common,'+common
-                    if (parent) {
+                    if (parent=='true') {
                         needBuildProList.add("chanpay-parent")
                         println 'needBuildProList 1'
                     }
-                    if (general) {
+                    if (general=='true') {
                         needBuildProList.add("chanpay-general")
                         println 'needBuildProList 2'
                     }
-                    if (common) {
+                    if (common=='true') {
                         needBuildProList.add("chanpay-common")
                         println 'needBuildProList 3'
                     }
