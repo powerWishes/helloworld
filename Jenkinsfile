@@ -14,9 +14,9 @@ pipeline {
                 ok "Ok, I'm sure."
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: 'false', description: '父工程')
-                    booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: 'false', description: '通用父工程')
-                    booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: 'false', description: '公共工程')
+                    booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: false, description: '父工程')
+                    booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: false, description: '通用父工程')
+                    booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: false, description: '公共工程')
                }
             }
             steps {
