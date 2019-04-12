@@ -23,14 +23,15 @@ pipeline {
             steps {
                 script {
                     if (params['is-parent-build-chanpay-parent']==true) {
-                         needBuildProList.add('chanpay-parent')
+                         needBuildProList.add("chanpay-parent")
                     }
                     if (params['is-parent-build-chanpay-parent-general']==true) {
-                         needBuildProList.add('chanpay-general')
+                         needBuildProList.add("chanpay-general")
                     }
                     if (params['is-parent-build-chanpay-common']==true) {
-                         needBuildProList.add('chanpay-common')
+                         needBuildProList.add("chanpay-common")
                     }
+                    buildPerson = params['PERSON']
                     println 'need build project :' + needBuildProList
                     println 'buildPerson :' + buildPerson
                 }
