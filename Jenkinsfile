@@ -22,15 +22,15 @@ pipeline {
             }
             steps {
                 script {
-                    if ("${is-parent-build-chanpay-parent}"=="true") {
+                    if (${is-parent-build-chanpay-parent}) {
                         needBuildProList.add("chanpay-parent")
                         println 'needBuildProList 1'
                     }
-                    if ("${is-parent-build-chanpay-parent-general}"=="true") {
+                    if (${is-parent-build-chanpay-parent-general}) {
                         needBuildProList.add("chanpay-general")
                         println 'needBuildProList 2'
                     }
-                    if ("${is-parent-build-chanpay-common}"=="true") {
+                    if (${is-parent-build-chanpay-common}) {
                         needBuildProList.add("chanpay-common")
                         println 'needBuildProList 3'
                     }
