@@ -1,9 +1,9 @@
 #!groovy
 def needBuildProList = []
 def buildPerson = 'admin'
-def parent = false
-def general = false
-def common = false
+def parent = 'false'
+def general = 'false'
+def common = 'false'
 pipeline {
     agent {
         docker {
@@ -24,11 +24,11 @@ pipeline {
                }
             }
             steps {
-                echo 'aaa ${parentBool}'
+                echo 'aaa "${parentBool}"'
                 script {
-                    parent = '${parentBool}'
-                    general = '${generalBool}'
-                    common = '${commonBool}'
+                    parent = "${parentBool}"
+                    general = "${generalBool}"
+                    common = "${commonBool}"
                     println 'parent,'+parent
                     println 'general,'+general
                     println 'common,'+common
