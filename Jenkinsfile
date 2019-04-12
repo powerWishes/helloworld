@@ -39,7 +39,10 @@ pipeline {
                     println 'buildPerson :' + buildPerson
                     for(nbp in needBuildProList) {
                         echo "正在检出项目：${nbp}"
-                    }    
+                    }
+                    for(param in params) {
+                        println '遍历params'+param.key+':'+param.value
+                    }
                 }
             }
         }
