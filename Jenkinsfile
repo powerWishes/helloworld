@@ -25,9 +25,9 @@ pipeline {
                     def parent = false
                     def general = false
                     def common = false
-                    parent = '${is-parent-build-chanpay-parent}'
-                    general = '${is-parent-build-chanpay-parent-general}'
-                    common = '${is-parent-build-chanpay-common}'
+                    parent = ${is-parent-build-chanpay-parent}
+                    general = ${is-parent-build-chanpay-parent-general}
+                    common = ${is-parent-build-chanpay-common}
                     println 'parent,'+parent
                     println 'general,'+general
                     println 'common,'+common
