@@ -19,9 +19,9 @@ pipeline {
             }
             steps {
                 script {
-                    echo is-parent-build-chanpay-parent value is ${is-parent-build-chanpay-parent}
-                    echo is-parent-build-chanpay-parent-general value is ${is-parent-build-chanpay-parent-general}
-                    echo is-parent-build-chanpay-common value is ${is-parent-build-chanpay-common}
+                    sh 'echo is-parent-build-chanpay-parent value is ${is-parent-build-chanpay-parent}'
+                    sh 'echo is-parent-build-chanpay-parent-general value is ${is-parent-build-chanpay-parent-general}'
+                    sh 'echo is-parent-build-chanpay-common value is ${is-parent-build-chanpay-common}'
                 }
             }
         }
