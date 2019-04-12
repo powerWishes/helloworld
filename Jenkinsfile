@@ -18,16 +18,16 @@ pipeline {
                 ok "Ok, I'm sure."
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    booleanParam(name: 'is-build-parent', defaultValue: false, description: '父工程')
-                    booleanParam(name: 'is-build-general', defaultValue: false, description: '通用父工程')
-                    booleanParam(name: 'is-build-common', defaultValue: false, description: '公共工程')
+                    booleanParam(name: 'isBuildParent', defaultValue: false, description: '父工程')
+                    booleanParam(name: 'isBuildGeneral', defaultValue: false, description: '通用父工程')
+                    booleanParam(name: 'isBuildCommon', defaultValue: false, description: '公共工程')
                }
             }
             steps {
                 script {
-                    parent = "${is-build-parent}"
-                    general = "${is-build-general}"
-                    common = "${is-build-common}"
+                    parent = "${isBuildParent}"
+                    general = "${isBuildGeneral}"
+                    common = "${isBuildCommon}"
                     println 'parent,'+parent
                     println 'general,'+general
                     println 'common,'+common
