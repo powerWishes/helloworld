@@ -22,15 +22,15 @@ pipeline {
             }
             steps {
                 script {
-                    if (params['is-parent-build-chanpay-parent']==true) {
+                    if ("${is-parent-build-chanpay-parent}"=="true") {
                         needBuildProList.add("chanpay-parent")
                         println 'needBuildProList 1'
                     }
-                    if (params['is-parent-build-chanpay-parent-general']==true) {
+                    if ("${is-parent-build-chanpay-parent-general}"=="true") {
                         needBuildProList.add("chanpay-general")
                         println 'needBuildProList 2'
                     }
-                    if (params['is-parent-build-chanpay-common']==true) {
+                    if ("${is-parent-build-chanpay-common}"=="true") {
                         needBuildProList.add("chanpay-common")
                         println 'needBuildProList 3'
                     }
@@ -39,9 +39,6 @@ pipeline {
                     println 'buildPerson :' + buildPerson
                     for(nbp in needBuildProList) {
                         echo "正在检出项目：${nbp}"
-                    }
-                    for(param in params) {
-                        println '遍历params'+param.key+':'+param.value
                     }
                 }
             }
