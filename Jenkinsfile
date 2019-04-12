@@ -1,3 +1,5 @@
+def needBuildProList = []
+def buildPerson = ''
 pipeline {
     agent {
         docker {
@@ -5,16 +7,32 @@ pipeline {
             args '-v /root/.m2:/root/.m2' 
         }
     }
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-        booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: 'false', description: '父工程')
-        booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: 'false', description: '通用父工程')
-        booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: 'false', description: '公共工程')
-    }
     stages {
         stage('__init__') {
+            input {
+                message "Choice your project, please."
+                ok "Ok, I'm sure."
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    booleanParam(name: 'is-parent-build-chanpay-parent', defaultValue: 'false', description: '父工程')
+                    booleanParam(name: 'is-parent-build-chanpay-parent-general', defaultValue: 'false', description: '通用父工程')
+                    booleanParam(name: 'is-parent-build-chanpay-common', defaultValue: 'false', description: '公共工程')
+               }
+            }
             steps {
-                sh 'echo "Hello, ${PERSON}, nice to meet you."'
+                if (${is-parent-build-chanpay-parent}==true) {
+                     needBuildProList.add('chanpay-parent')
+                 }
+                if (${is-parent-build-chanpay-parent-general}==true) {
+                     needBuildProList.add('chanpay-general')
+                 }
+                if (${is-parent-build-chanpay-common}==true) {
+                     needBuildProList.add('chanpay-common')
+                 }
+                script {
+                    println 'need build project :' + needBuildProList
+                    println 'buildPerson :' + buildPerson     
+                }
             }
         }
         stage('__build__') { 
